@@ -5,53 +5,45 @@ import {
 	ProductTitle,
 } from '../componens';
 import '../styles/customStyles.css';
-import { useShoppingCart } from '../hooks/useShoppingCart';
+// import { useShoppingCart } from '../hooks/useShoppingCart';
 import { products } from '../data/products';
 
+const product = products[0];
+
 export const ShoppingPage = () => {
-	const { onProductCountChange, shoppingCart } = useShoppingCart();
+	// const { onProductCountChange, shoppingCart } = useShoppingCart();
 
 	return (
 		<div>
 			<h1>Shopping Page</h1>
 			<hr />
-			<div
-				style={{
-					display: 'flex',
-					flexDirection: 'row',
-					flexWrap: 'wrap',
+
+			<ProductCard
+				product={product}
+				key={product.id}
+				className="bg-dark text-white"
+				initialValues={{
+					count: 0,
+					maxCount: 10,
 				}}
 			>
-				{products.map((product) => (
-					<ProductCard
-						key={product.id}
-						product={product}
-						onChange={onProductCountChange}
-						value={shoppingCart[product.id]?.count || 0}
-					>
-						<ProductImage img={product.img} />
-						<ProductTitle title={product.title} />
-						<ProductButtons />
-					</ProductCard>
-				))}
-			</div>
-			<div className="shopping-cart">
-				{Object.entries(shoppingCart).map(([key, product]) => (
-					<ProductCard
-						key={key}
-						product={product}
-						style={{ width: '100px' }}
-						value={product.count}
-						onChange={onProductCountChange}
-					>
-						<ProductImage />
-						<ProductButtons
-							style={{ display: 'flex', justifyContent: 'center' }}
-						/>
-					</ProductCard>
-				))}
-			</div>
-			{JSON.stringify(shoppingCart, null, 4)}
+				{({ reset, count, increaseBy, isMaxCountReached, maxCount }) => (
+					<>
+						<ProductImage className="custom-image" />
+						<ProductTitle className="text-bold" />
+						<ProductButtons className="custom-buttons" />
+
+						<button onClick={reset}>Reset</button>
+						<button onClick={() => increaseBy(-2)}>-2</button>
+						{isMaxCountReached ? null : (
+							<button onClick={() => increaseBy(2)}>+2</button>
+						)}
+						<span>
+							{count} - {maxCount}
+						</span>
+					</>
+				)}
+			</ProductCard>
 		</div>
 	);
 };
