@@ -1,0 +1,74 @@
+[
+  {
+    "type": "input",
+    "name": "firstname",
+    "placeholder": "",
+    "label": "First Name",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": "5"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "lastName",
+    "placeholder": "Blancarte",
+    "label": "Last Name",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "email",
+    "label": "Email",
+    "value": "tester@test.com",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "email"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "favoriteGame",
+    "label": "Favorite Game",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ],
+    "options": [
+      {
+        "id": "1",
+        "value": "SuperSmash"
+      },
+      {
+        "id": "2",
+        "value": "RES"
+      },
+      {
+        "id": "3",
+        "value": "Dota 2"
+      },
+      {
+        "id": "4",
+        "value": "League of Legends"
+      }
+    ]
+  }
+]

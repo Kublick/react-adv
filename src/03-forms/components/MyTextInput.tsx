@@ -1,7 +1,5 @@
 import { ErrorMessage, useField } from "formik";
-
 interface Props {
-  id?: string;
   label: string;
   name: string;
   type?: "text" | "email" | "password";
